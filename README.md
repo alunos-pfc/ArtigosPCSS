@@ -25,3 +25,18 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
    + Link para o artigo: https://arxiv.org/pdf/1905.08748.pdf
    + É proposto um método de adaptação muito simples de U-Nets para a segmentação de nuvens de pontos do LiDAR por meio de imagens de alcance 2D (Range-Image U-net). As imagens são tiradas da nuvem 3D do LiDAR explorando a topologia do sensor e focando em objetos como carros, pedestres e ciclistas, por exemplo. Para treinar o modelo, cada imagem de alcance é retirada do KITTI object detection dataset e é usada como input em uma CNN.
      
+5. SemanticKITTI: A Dataset for Semantic Scene Understanding of LiDAR Sequences (2019)
+   + Link para o artigo: https://arxiv.org/pdf/1904.01416.pdf
+   + Link para vídeo de apresentação do artigo na conferência ICCV: https://www.youtube.com/watch?v=3qNOXvkpK4I
+   + Link para site do dataset: http://semantic-kitti.org/
+   + __Leitura pendente__
+
+6. MVLidarNet: Real-Time Multi-Class Scene Understanding for Autonomous Driving Using Multiple Views (2020)
+   + Link para o artigo: https://browse.arxiv.org/pdf/2006.05518.pdf
+   + Link para o vídeo de apresentação do artigo na conferência IROS: https://www.youtube.com/watch?v=2ck5_sToayc
+   + __Leitura pendente__
+
+7. Efficient and Robust LiDAR-Based End-to-End Navigation (2021)
+   + Link para o artigo: https://browse.arxiv.org/pdf/2105.09932.pdf
+   + Link para o vídeo de apresentação do artigo na conferência ICRA: https://www.youtube.com/watch?v=5ZyhHxjgUGo
+   + __Leitura pendente__
