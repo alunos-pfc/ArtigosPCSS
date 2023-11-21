@@ -46,3 +46,8 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
    + Link para o artigo: https://browse.arxiv.org/pdf/2105.09932.pdf
    + Link para o vídeo de apresentação do artigo na conferência ICRA: https://www.youtube.com/watch?v=5ZyhHxjgUGo
    + __Leitura pendente__
+  
+8. Large-scale Point Cloud Semantic Segmentation with Superpoint Graphs (2019)
+   + Link para o artigo: [https://arxiv.org/pdf/1905.08748.pdf](https://openaccess.thecvf.com/content_cvpr_2018/papers/Landrieu_Large-Scale_Point_Cloud_CVPR_2018_paper.pdf)
+   + É proposto um framework para segmentação semântica de nuvens de pontos 3D, que é capaz de segmentar objetos em subpartes geométricas simples e semânticas.  framework é baseado em uma abordagem de superpixels, que agrupa pontos em regiões homogêneas e compactas, e em uma rede neural convolucional que aprende a segmentação semântica desses superpixels.
+   + Datasets utilizados: Semantic3D (https://www.semantic3d.net/) e S3DIS (https://paperswithcode.com/dataset/s3dis).
