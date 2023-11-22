@@ -47,7 +47,22 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
    + Link para o vídeo de apresentação do artigo na conferência ICRA: https://www.youtube.com/watch?v=5ZyhHxjgUGo
    + __Leitura pendente__
   
-8. Large-scale Point Cloud Semantic Segmentation with Superpoint Graphs (2019)
-   + Link para o artigo: [https://arxiv.org/pdf/1905.08748.pdf](https://openaccess.thecvf.com/content_cvpr_2018/papers/Landrieu_Large-Scale_Point_Cloud_CVPR_2018_paper.pdf)
+8. Large-scale Point Cloud Semantic Segmentation with Superpoint Graphs (2022)
+   + Link para o artigo: (https://openaccess.thecvf.com/content_cvpr_2018/papers/Landrieu_Large-Scale_Point_Cloud_CVPR_2018_paper.pdf)
    + É proposto um framework para segmentação semântica de nuvens de pontos 3D, que é capaz de segmentar objetos em subpartes geométricas simples e semânticas.  framework é baseado em uma abordagem de superpixels, que agrupa pontos em regiões homogêneas e compactas, e em uma rede neural convolucional que aprende a segmentação semântica desses superpixels.
    + Datasets utilizados: Semantic3D (https://www.semantic3d.net/) e S3DIS (https://paperswithcode.com/dataset/s3dis).
+
+9. Real-Time LiDAR Point Cloud Semantic Segmentation for Autonomous Drivings (2019)
+   + Link para o artigo: https://www.mdpi.com/2079-9292/11/1/11
+   + __Pendente__
+   + Datasets utilizados: Semantic-KITTI (http://www.semantic-kitti.org/).
+
+10. Automated Evaluation of Semantic Segmentation Robustness for Autonomous Driving (2020)
+    + Link para o artigo: https://ieeexplore-ieee-org.ez49.periodicos.capes.gov.br/document/8691698
+    + __Pendente__
+    + Datasets utilizados: Cityscapes (https://www.cityscapes-dataset.com/).
+
+11. Fast and Lite Point Cloud Semantic Segmentation for Autonomous Driving Utilizing LiDAR Synthetic Training Data (2022)
+    + Link para o artigo: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9801844
+    + __Pendente__
+    + Datasets utilizados: Semantic-KITTI (http://www.semantic-kitti.org/).
