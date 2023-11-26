@@ -66,3 +66,30 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
     + Link para o artigo: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9801844
     + __Pendente__
     + Datasets utilizados: Semantic-KITTI (http://www.semantic-kitti.org/).
+## Categorização dos Datasets
+
+1. NuScenes: A Multimodal dataset for Autonomous Driving (https://www.nuscenes.org/nuscenes)
+   + Link para o artigo: https://arxiv.org/pdf/1903.11027.pdf
+   + NuScenes é um dataset que carrega todo o conjunto de sensores de um carro autônomo: 6 câmeras, 5 radars e 1 lidar, todos com 360 graus de campo de visão. O dataset compreende 1000 cenas, cada uma de 20s de duração e _bounding boxes_ 3D totalmente anotadas para 23 classes e 8 atributos. Possui 7x mais anotações e 100x mais imagens que o KITTI dataset
+   + **Setup do carro**:![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/98bacc5b-85cf-458f-8d13-313b73661ca4)
+   + **Sincronização de sensores**: A exposição da câmera é ativada quando o lidar no topo varre o centro do campo de visão da câmera. O _timestamp_ da imagem é o tempo da ativação da exposição, e o _timestamp_ do lidar é o tempo quando a rotação total do frame do lidar é concluída.
+   + **Localização**: Devido a possíveis falhas de GPS em áreas urbanas densas, a localização do carro é feita a partir da criação de um mapa offline HD detalhado da nuvem de pontos do lidar. Enquanto as informações são coletadas, é utilizado o esquema de localização Monte Carlo
+   + **Mapa**: É providenciado mapas semânticos fiéis das áreas relevantes. O mapa rasterizado original inclui apenas ruas e calçadas com uma resolução de 10px/m. O mapa vetorizado providencia informações de 11 classes semânticas. Por fim, é providenciado rotas básicas, nas quais são os caminhos ideias que um veículo autônomo deve seguir levando em consideração nenhum obstáculo com o objetivo de facilitar previsões de trajetória pelo fato de simplificar o espaço de procura por rotas viáveis. ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/28ae1706-27b0-4aab-b2b3-1839da7931bc)
+
+   + **Seleção de cenas**: São 1000 cenas de 20s cada, incluindo trânsitos de alta densidade (interseções, obras, etc...), classes raras (ambulância, animais, etc...), situações de trânsito potencialmente perigosas (pedestres não atravessando na faixa, comportamentos de trânsitos incorretos, etc...), manobras (mudança de faixa, curvas, paradas) e outras situações que possam ser difíceis para um veículo autônomo.
+   + **Anotação de Data**: É amostrado _keyframes_ (imagem, lidar, radar) a 2Hz. São anotadas todas as 23 classes de objetos em cada _keyframe_ com uma categoria semântica, atributos (visibilidade, atividade e pose) e um cubóide (_bounding box_) modelado como x, y, z, comprimento, altura e ângulo de guinada. A anotação é contínua perante cada cena se elas são cobertas por pelo menos 1 ponto da nuvem do lidar ou do radar com frequências de captura de 12Hz (câmera), 13Hz (lidar) e 20Hz (radar)
+   + Tabela das classes de plano frontal:
+   + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/9cac52ff-2044-4167-9ae6-c527e9faf8d5)
+   + Tabela das classes de plano de fundo:
+   + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/4ef033bb-af5a-4039-985b-28bd8922ef5e)
+   + Tabela dos atributos:
+   + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/c9fa576d-6d27-44cf-aee2-874a76db0364)
+   + **Tasks e Métrica**:
+       + Detecção: São detectados 10 classes de objeto com _bounding boxes_, atributos e velocidades. As 10 classes são um subconjunto de todas as 23 classes anotadas. É utilizado a métrica de Precisão Média (AP), mas define o _match_ limitando a distância do centro 2D _d_ no chão ao invés de intersecção sobre união (IOU). O cálculo do AP é a área normalizada embaixo da curva de recuperação de precisão para recuperação e precisão acima de 10%. Caso pontos estejam abaixo de 10%, são removidos para minimizar o impacto de ruído. Se nenhum ponto nessa área é usado, o AP para tal classe é 0. Por fim, é medido os limites de _match_ de D = {0.5,1,2,4} metros e o conjunto de classes C como visto na imagem abaixo:
+       + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/0f3770a6-2863-4f58-8236-df37df35408b)
+       + Monitoramento:  Multi Object Tracking Accuracy (MOTA) e Multi Object Tracking Precision (MOTP), alarmes falsos por frame, trajetórias mais monitoradas, trajetórias mais rejeitadas, falsos positivos, falsos negativos, mudanças de identidade e fragmentações de monitoramento
+
+   + **STATUS**: _Provavelmente rejeitado_. Por mais que as métricas e categorias sejam promissoras, o fato da interpretação do lidar ser a partir de _bounding boxes_ foge do método proposto para o nosso projeto. 
+
+
+
