@@ -3,7 +3,7 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
 
 ## Artigos a serem analisados
 * String de busca atual: _LiDAR AND ROS AND point clouds semantic segmentation AND autonomous driving_
-* Datasets citados até o momento (possui informações de artigos que não estão listados): SemanticKITTI (2x), NuScenes (1x), KITTI dataset (2x), KITTI 3D object detection dataset (2x),  KITTI Velodyne object detection dataset (1x), Semantic3D (1x), SemanticPOSS (1x), SqueezeSeg (1x)
+* Datasets citados até o momento (possui informações de artigos que não estão listados): SemanticKITTI (4x), NuScenes (1x), KITTI dataset (2x), KITTI 3D object detection dataset (2x),  KITTI Velodyne object detection dataset (1x), Semantic3D (2x), SemanticPOSS (1x), SqueezeSeg (1x), S3DIS (1x), Cityscapes (1x).
 * Códigos open source para análises futuras: https://github.com/TiagoCortinhal/SalsaNext -  https://gitlab.com/aksoyeren/salsanet - https://github.com/ywangeq/PointSeg - https://github.com/pyun-ram/PointSeg - https://github.com/lvpeiqing/RIU-Net
 * Abreviações ou siglas importantes:
   - CNN: Redes Neurais Convolucionais.
