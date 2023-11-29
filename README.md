@@ -118,6 +118,45 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
      + _Experimentos de varredura múltipla_: O objetivo é permitir os métodos de explorarem a informação de uma sequência de múltiplos scans passados para melhorar a segmentação do scan atual. Após isso, o objetivo é fazer com que os métodos consigam distinguir objetos e classes que estão movendo de objetos estáticos. A avaliação é feita da mesma forma, pelo mIOU do scan atual sem se importar com a quantidade de scans passados foram usados para computar o resultado.
    + **STATUS**: _Selecionado para confirmação_. É o dataset pioneiro dos estudos sobre segmentação semântica e oferece as ferramentas na forma que precisamos com uma métrica básica para análise de dados.
 
+3. Appolo Scapes: Open Dataset for Autonomous Driving and its Application (https://apolloscape.auto/)
+   + Link para o artigo: https://arxiv.org/pdf/1803.06184.pdf
+   + **Overview**: É um conjunto de dados extenso de LIDAR para condução autônoma. Ele contém 100.000 quadros de nuvem de pontos reais para treinamento e 20.000 para teste, incluindo trajetórias de 1000 km para o tráfego urbano. Esses dados reais foram rotulados para um campo de visão de 360 graus. Os obstáculos rotulados foram categorizados em quatro classes, incluindo aproximadamente 768.950 carros comuns, 103.092 veículos grandes (como caminhões e ônibus), 160.897 ciclistas, 160.897 pedestres, 160.897 cones de tráfego e 160.897 outros objetos desconhecidos. "O conjunto de dados de Análise de Cena" (Scene parsing) fornece 146.997 quadros com anotações correspondentes a nível de pixel e informações de pose, além de mapas de profundidade para o plano de fundo estático.
+   + **Setup do carro**:<br>
+   ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/a292f911-a526-4ea0-a9fd-7216b0383631)
+
+   + **Sistema de coleta**: Usa o Riegl VMX-1HA (http://www.riegl.com/) como a plataforma de aquisição para coletar ambientes 3D estáticos, além de sistemas de câmeras e lasers posicionados como indica a figura:<br>
+![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/62149165-b219-4ef4-9210-9eef0f2d0c4f)<br>
+   o mesmo também contém um conjunto de sensores que inclui uma Unidade de Medição Inercial (IMU) e um Sistema Global de Navegação por Satélite (GNSS), que oferecem informações precisas de posição, inclinação (roll & pitch), e orientação (heading). Para obter informações de GPS/IMU altamente precisas, é estabelecida uma base temporária de GPS nas proximidades do local de coleta. Tudo isso é feito em um veículo operaando normalmente a uma velocidade de 30 km por hora, com as câmeras sendo acionadas a cada metro (30fps).
+   + **Comparação com outros datasets**: Número total e médio de instâncias nos conjuntos de dados KITTI, Cityscapes, BDD100K, e ApolloScape (nível de instância). O "pixel" representa anotações 2D a nível de pixel e "box" representa anotações a nível de caixa delimitadora.<br>
+  ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/e706b765-d2a2-4cdc-b3ea-d805b838c63a)
+   + **Semantic lanemark segmentation**: No ApolloScape, são utilizadas 27 marcações de faixa diferentes para avaliação. Os rótulos são definidos com base em atributos das marcas de faixa, incluindo cor (por exemplo, branca e amarela) e tipo (por exemplo, contínua e tracejada). Especificamente, 165.949 imagens de 3 locais de estrada são rotuladas e disponibilizadas online, onde 33.760 imagens são retidas para teste. Em comparação com outros conjuntos de dados publicamente disponíveis, como o KITTI ou o da Tusimple, o ApolloScape é o primeiro conjunto de dados grande que contém uma rica rotulagem semântica para marcas de faixa, abrangendo diversas variações. <br>
+![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/a4a01f58-7713-4cea-b85c-019cadc378c8)
+   + **Processo de rotulagem**: Para tornar o processo de rotulagem de quadros de vídeo preciso e eficiente, é proposto um pipeline de rotulagem ativa que considera conjuntamente informações 2D e 3D, conforme mostrado na figura:<br>
+  ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/890f083b-d4d9-41c5-be18-9c00735390c6) <br>
+O pipeline consiste principalmente em duas etapas: rotulagem 3D e rotulagem 2D, para lidar com objetos/planos de fundo estáticos e objetos em movimento, respectivamente. A ideia básica do pipeline é transferir os resultados rotulados em 3D para imagens 2D por meio de projeção de câmera.<br>
+__Remoção de objetos em movimento__: A rotulagem de plano de fundo estático e objetos em movimento são tratados separadamente.<br>
+__Splatting e Projeção__: Para cada ponto no ambiente, é adotada a técnica de "point splatting", ampliando o ponto 3D para um quadrado onde o tamanho do quadrado é determinado por sua classe semântica.<br>
+__Rotulagem 2D de objetos e planos de fundo__: Os resultados da segmentação são combinados com um mapa de rótulos renderizado a partir de nuvens de pontos semânticas 3D.<br>
+__Rotulagem de segmentos de marcas de faixa na estrada__: Realiza um processo de rotulagem semelhante ao da rotulagem 3D do plano de fundo rígido, rotulando cada ponto 3D com as etiquetas predefinidas de marcas de faixa. <br>
+__Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D, como nuvem de pontos 3D, plano de fundo 2D, instância 2D e faixa de marcação 3D, são inclusos estágios de verificação para controlar a qualidade do rótulo. Para cada tarefa, existem instruções detalhadas para treinar os rotuladores, e um rotulador está apto a começar a rotular após passar por um questionário projetado.<br>
+   + **Métricas**: Usa métricas semelhantes às definidos no KITTI. O objetivo na tarefa de detecção de objetos 3D é treinar detectores de objetos para as classes 'veículo', 'pedestre' e 'ciclista'. Os detectores de objetos devem fornecer a caixa delimitadora 3D (dimensões 3D e posição 3D) e a pontuação/confiança da detecção.<br>
+   Seguindo o CLEARMOT, utiliza a acurácia de rastreamento de múltiplos objetos (MOTA) como critério de avaliação.<br>
+   ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/4d6f5b1b-524c-4316-9cbf-0e54b964c6d2)<br>
+   Onde M, F, MME e Np são, respectivamente, o número de perdas, de falsos positivos, de desajustes, e de objetos presentes para o tempo t.<br>
+   Para o objeto i e a hipótese do rastreador j, utiliza a sobreposição de interseção sobre união (IoU) para definir.<br>
+   ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/67e34e07-5853-4939-878e-a9feed4d3db9)<br>
+   A pontuação final será a MOTA média para Carro (C), Pedestre (P), e Ciclista (B).
+
+
+
+   + **STATUS**: _Provavelmente rejeitado_. É um dataset muito completo com diversas imagens e ferramentas, porém o hardware requisitado para seu uso está fora do escopo do projeto.
+
+
+
+
+
+
+
 
 
 
