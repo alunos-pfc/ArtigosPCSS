@@ -3,7 +3,7 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
 
 ## Artigos a serem analisados
 * String de busca atual: _LiDAR AND ROS AND point clouds semantic segmentation AND autonomous driving_
-* Datasets citados até o momento (possui informações de artigos que não estão listados): SemanticKITTI (4x), NuScenes (1x), KITTI dataset (2x), KITTI 3D object detection dataset (2x),  KITTI Velodyne object detection dataset (1x), Semantic3D (2x), SemanticPOSS (1x), SqueezeSeg (1x), S3DIS (1x), Cityscapes (1x).
+* Datasets citados até o momento (possui informações de artigos que não estão listados): SemanticKITTI (6x), NuScenes (2x), KITTI dataset (3x), KITTI 3D object detection dataset (2x),  KITTI Velodyne object detection dataset (1x), Semantic3D (2x), SemanticPOSS (1x), SqueezeSeg (1x), S3DIS (1x), Cityscapes (1x), SYNTHIA (1x), Apollo Point Cloud (1x).
 * Códigos open source para análises futuras: https://github.com/TiagoCortinhal/SalsaNext -  https://gitlab.com/aksoyeren/salsanet - https://github.com/ywangeq/PointSeg - https://github.com/pyun-ram/PointSeg - https://github.com/lvpeiqing/RIU-Net
 * Abreviações ou siglas importantes:
   - CNN: Redes Neurais Convolucionais.
@@ -66,6 +66,21 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
     + Link para o artigo: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9801844
     + __Pendente__
     + Datasets utilizados: Semantic-KITTI (http://www.semantic-kitti.org/).
+   
+12. PCSCNet: Fast 3D semantic segmentation of LiDAR point cloud for autonomous car using point convolution and sparse convolution network (2023)
+    + Link para o artigo: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9801844
+    + __Pendente__
+    + Datasets utilizados: Semantic-KITTI (http://www.semantic-kitti.org/), NuScenes (https://www.nuscenes.org/).
+   
+13. Improved 3D Semantic Segmentation Model Based on RGB Image and LiDAR Point Cloud Fusion for Automantic Driving (2023)
+    + Link para o artigo: https://link-springer-com.ez49.periodicos.capes.gov.br/article/10.1007/s12239-023-0065-y
+    + __Pendente__
+    + Datasets utilizados: Semantic-KITTI (http://www.semantic-kitti.org/).
+   
+14. Simulating LIDAR Point Cloud for Autonomous Driving using Real-world Scenes and Traffic Flows (2018)
+    + Link para o artigo: https://www.researchgate.net/profile/Dingfu-Zhou/publication/329057353_Simulating_LIDAR_Point_Cloud_for_Autonomous_Driving_using_Real-world_Scenes_and_Traffic_Flows/links/5c22ea0f92851c22a3463a25/Simulating-LIDAR-Point-Cloud-for-Autonomous-Driving-using-Real-world-Scenes-and-Traffic-Flows.pdf
+    + __Pendente__
+    + Datasets utilizados: KITTI (https://www.cvlibs.net/datasets/kitti/), SYNTHIA (https://synthia-dataset.net/), Apollo Point Cloud (https://apolloscape.auto/).
 ## Categorização dos Datasets
 
 1. NuScenes: A Multimodal dataset for Autonomous Driving (https://www.nuscenes.org/nuscenes)
