@@ -4,6 +4,18 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
 ## Artigos a serem analisados
 * String de busca atual: _LiDAR AND ROS AND point clouds semantic segmentation AND autonomous driving_
 * Datasets citados até o momento (possui informações de artigos que não estão listados): SemanticKITTI (6x), NuScenes (2x), KITTI dataset (3x), KITTI 3D object detection dataset (2x),  KITTI Velodyne object detection dataset (1x), Semantic3D (2x), SemanticPOSS (1x), SqueezeSeg (1x), S3DIS (1x), Cityscapes (1x), SYNTHIA (1x), Apollo Point Cloud (1x).
+* Classes de interesse:
+  - Veículo
+  - Veículo pesado
+  - Motocicleta
+  - Bicicleta
+  - Pessoa
+  - Rua
+  - Calçada
+  - Poste
+  - Parede
+  - Prédio
+  - Vegetação
 * Códigos open source para análises futuras: https://github.com/TiagoCortinhal/SalsaNext -  https://gitlab.com/aksoyeren/salsanet - https://github.com/ywangeq/PointSeg - https://github.com/pyun-ram/PointSeg - https://github.com/lvpeiqing/RIU-Net
 * Abreviações ou siglas importantes:
   - CNN: Redes Neurais Convolucionais.
@@ -120,6 +132,7 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
 
 3. Appolo Scapes: Open Dataset for Autonomous Driving and its Application (https://apolloscape.auto/)
    + Link para o artigo: https://arxiv.org/pdf/1803.06184.pdf
+   + Links relevantes: https://github.com/ApolloScapeAuto/dataset-api, https://apolloscape.auto/tracking.html.
    + **Overview**: É um conjunto de dados extenso de LIDAR para condução autônoma. Ele contém 100.000 quadros de nuvem de pontos reais para treinamento e 20.000 para teste, incluindo trajetórias de 1000 km para o tráfego urbano. Esses dados reais foram rotulados para um campo de visão de 360 graus. Os obstáculos rotulados foram categorizados em quatro classes, incluindo aproximadamente 768.950 carros comuns, 103.092 veículos grandes (como caminhões e ônibus), 160.897 ciclistas, 160.897 pedestres, 160.897 cones de tráfego e 160.897 outros objetos desconhecidos. "O conjunto de dados de Análise de Cena" (Scene parsing) fornece 146.997 quadros com anotações correspondentes a nível de pixel e informações de pose, além de mapas de profundidade para o plano de fundo estático.
    + **Setup do carro**:<br>
    ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/a292f911-a526-4ea0-a9fd-7216b0383631)
@@ -139,6 +152,9 @@ __Splatting e Projeção__: Para cada ponto no ambiente, é adotada a técnica d
 __Rotulagem 2D de objetos e planos de fundo__: Os resultados da segmentação são combinados com um mapa de rótulos renderizado a partir de nuvens de pontos semânticas 3D.<br>
 __Rotulagem de segmentos de marcas de faixa na estrada__: Realiza um processo de rotulagem semelhante ao da rotulagem 3D do plano de fundo rígido, rotulando cada ponto 3D com as etiquetas predefinidas de marcas de faixa. <br>
 __Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D, como nuvem de pontos 3D, plano de fundo 2D, instância 2D e faixa de marcação 3D, são inclusos estágios de verificação para controlar a qualidade do rótulo. Para cada tarefa, existem instruções detalhadas para treinar os rotuladores, e um rotulador está apto a começar a rotular após passar por um questionário projetado.<br>
+   + **Definições das classes**: Possui 25 rótulos diferentes distribuídos em cinco grupos. Cada pixel é atribuído dois IDs: class ID e train ID. O train ID é usado no treinamento e pode ser ajustado conforme necessário. O valor 255 indica rótulos ignorados que não são avaliados durante a fase de teste. O class ID é utilizado para representar o rótulo nas anotações de referência.<br>
+   ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/fc483a72-2102-4010-b867-ea26ddfbddd6)
+
    + **Métricas**: Usa métricas semelhantes às definidos no KITTI. O objetivo na tarefa de detecção de objetos 3D é treinar detectores de objetos para as classes 'veículo', 'pedestre' e 'ciclista'. Os detectores de objetos devem fornecer a caixa delimitadora 3D (dimensões 3D e posição 3D) e a pontuação/confiança da detecção.<br>
    Seguindo o CLEARMOT, utiliza a acurácia de rastreamento de múltiplos objetos (MOTA) como critério de avaliação.<br>
    ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/4d6f5b1b-524c-4316-9cbf-0e54b964c6d2)<br>
@@ -149,7 +165,7 @@ __Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D,
 
 
 
-   + **STATUS**: _Provavelmente rejeitado_. É um dataset muito completo com diversas imagens e ferramentas, porém o hardware requisitado para seu uso está fora do escopo do projeto.
+   + **STATUS**: _Selecionado para confirmação_. É um dataset muito completo com diversas imagens e ferramentas, o mesmo possui uma anotação semântica pixel a pixel dos dados registrados fornecida em 2D, que talvez não seja utilizada, mas também possui uma anotação semântica ponto a ponto em 3D para 28 classes, que pode ser do interesse do projeto.
 
 
 ## Ferramentas
