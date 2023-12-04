@@ -82,7 +82,7 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
     + __Pendente__
     + Datasets utilizados: KITTI (https://www.cvlibs.net/datasets/kitti/), SYNTHIA (https://synthia-dataset.net/), Apollo Point Cloud (https://apolloscape.auto/).
 ## Categorização dos Datasets
-
+   + Classes procuradas: Pessoas, rua, calçada (faixa de pedestre?), estacionamento, prédio, carro (van?), ônibus, motocicleta, vegetação, poste, 
 1. NuScenes: A Multimodal dataset for Autonomous Driving (https://www.nuscenes.org/nuscenes)
    + Link para o artigo: https://arxiv.org/pdf/1903.11027.pdf
    + **Overview**: NuScenes é um dataset que carrega todo o conjunto de sensores de um carro autônomo: 6 câmeras, 5 radars e 1 lidar, todos com 360 graus de campo de visão. O dataset compreende 1000 cenas, cada uma de 20s de duração e _bounding boxes_ 3D totalmente anotadas para 23 classes e 8 atributos. Possui 7x mais anotações e 100x mais imagens que o KITTI dataset.
@@ -151,6 +151,22 @@ __Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D,
 
    + **STATUS**: _Provavelmente rejeitado_. É um dataset muito completo com diversas imagens e ferramentas, porém o hardware requisitado para seu uso está fora do escopo do projeto.
 
+
+## Ferramentas
+   1. SemanticKITTI API:
+      + Link do repositório: https://github.com/PRBonn/semantic-kitti-api
+      + **Overview**: Um dos fundadores do SemanticKITTI desenvolveu um repositório com scripts em Python para facilitar a abertura, visualização, o processo e avaliação de resultados da nuvem de pontos e rótulos provenientes do semanticKITTI dataset. O repositório conta com um tutorial simples de utilização no terminal, bem como um Dockerfile caso seja requerido utilização de cum conteiner para rodar o dataset, como no caso do projeto atual. Os códigos não foram detalhadamente analisados mas é percebido que estão comentados e cabe ao teste para confirmação.
+      + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/4aea31e3-8e15-422c-a9cc-34751932524e)
+
+   2. CloudCompare:
+      + Link da plataforma: https://www.danielgm.net/cc/
+      + **Overview**: É uma plataforma feita em C++ de pré-processamento, processamento e visualização de nuvem de pontos 3D com uma interface gráfica, ferramentas de segmentação, automatização de processos por scripts (não inclusos) para integrar em pipelines de processamentos de dados e uma documentação intuitiva para o uso. Além disso, possui recursos avançados para análise estatística, análise visual dos resultados e operações de pré-processamento, como filtragem e remoção de outliers, por exemplo, antes da aplicação de um algoritmo de segmentação. É possível utilizar a plataforma com dados do ROS e vice-versa
+      + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/66d0fccf-09a4-4769-bf49-b1192f2f708d)
+
+   3. Open3D
+      + Link da plataforma: http://www.open3d.org/
+      + **Overview**: É uma plataforma em python/C++ mais orientada ao processamento de dados 3D, como nuvem de pontos e malhas, sendo possível integrar em pipelines de processamento mais amplo para uma análise de videos. Por enquanto, um ponto positivo é que a plataforma é compatível com o Jupyter Notebook ou Google Colab, porém a análise da nuvem de pontos das cenas do dataset selecionado provavelmente terá que ser feita frame a frame. É possível utilizar a plataforma com dados do ROS e vice-versa.
+      + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/70a55c92-34ac-482e-b584-e6883fceb451)
 
 
 
