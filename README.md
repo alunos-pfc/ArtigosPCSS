@@ -94,7 +94,7 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
     + __Pendente__
     + Datasets utilizados: KITTI (https://www.cvlibs.net/datasets/kitti/), SYNTHIA (https://synthia-dataset.net/), Apollo Point Cloud (https://apolloscape.auto/).
 ## Categorização dos Datasets
-   + Classes procuradas: Pessoas, rua, calçada (faixa de pedestre?), estacionamento, prédio, carro (van?), ônibus, motocicleta, vegetação, poste, 
+
 1. NuScenes: A Multimodal dataset for Autonomous Driving (https://www.nuscenes.org/nuscenes)
    + Link para o artigo: https://arxiv.org/pdf/1903.11027.pdf
    + **Overview**: NuScenes é um dataset que carrega todo o conjunto de sensores de um carro autônomo: 6 câmeras, 5 radars e 1 lidar, todos com 360 graus de campo de visão. O dataset compreende 1000 cenas, cada uma de 20s de duração e _bounding boxes_ 3D totalmente anotadas para 23 classes e 8 atributos. Possui 7x mais anotações e 100x mais imagens que o KITTI dataset.
@@ -128,6 +128,18 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
        + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/4d65bbd2-0327-4e1b-a55d-b25ff3827daa)
        + sendo TP_c, FP_c e FN_c correspondentes aos números de verdadeiros positivos, falsos positivos e falsos negativos previstos para a classe c, e C é o número de classes (não estão distinguindo objetos movendo de estáticos).
      + _Experimentos de varredura múltipla_: O objetivo é permitir os métodos de explorarem a informação de uma sequência de múltiplos scans passados para melhorar a segmentação do scan atual. Após isso, o objetivo é fazer com que os métodos consigam distinguir objetos e classes que estão movendo de objetos estáticos. A avaliação é feita da mesma forma, pelo mIOU do scan atual sem se importar com a quantidade de scans passados foram usados para computar o resultado.
+   + **Estrutura de Pastas**:
+       + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/796cc91d-3066-4009-8041-8c91b8602b9a)
+
+       + _dataset_ é a pasta principal que contem o dataset inteiro.
+       + _sequences_ é a subpasta que está dentro da pasta _dataset_ e contem as informações organizadas pelas sequências. Cada sequência representa uma situação contínua de direção.
+       + _<sequence_number>_ é a subpasta que está dentro da pasta _sequences_ e representa o número da sequência específica (00,01,02,...,21).
+       + _velodyne_ é a subpasta que está dentro da pasta _<sequence_number>_ que contem a informação da nuvem de pontos do LiDAR na forma de arquivos binários (.bin).
+       + _labels_ é a subpasta que está dentro da pasta _<sequence_number>_ que contem a informação verdadeira rotulada em um _uint32_ para cara ponto correspondente do scan do Velodyne (.label), podendo ser informações sobre classes de objetos (carros, pedestres e superfícies).
+       + _calib_ é a subpasta que está dentro da pasta _<sequence_number>_ que contem a informação de calibragem como setup do sensor, parâmetros intrínsicos e extrínsicos (.txt).
+       + _poses_ é a subpasta que está dentro da pasta _<sequence_number>_ que contem a informação sobre poses do sensor em difenrentes tempos. Essencial para entender o arranjo espacial dos sensores durante a coleta de dados (.txt).
+       + _timestamps_ é a subpasta que está dentro da pasta _<sequence_number>_ que armazena os _timestamps_ correspondentes de cada frame na sequência. Crucial para sincronizar dados de sensores diferentes (.txt). 
+
    + **STATUS**: _Selecionado para confirmação_. É o dataset pioneiro dos estudos sobre segmentação semântica e oferece as ferramentas na forma que precisamos com uma métrica básica para análise de dados.
 
 3. Appolo Scapes: Open Dataset for Autonomous Driving and its Application (https://apolloscape.auto/)
@@ -173,13 +185,17 @@ __Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D,
       + Link do repositório: https://github.com/PRBonn/semantic-kitti-api
       + **Overview**: Um dos fundadores do SemanticKITTI desenvolveu um repositório com scripts em Python para facilitar a abertura, visualização, o processo e avaliação de resultados da nuvem de pontos e rótulos provenientes do semanticKITTI dataset. O repositório conta com um tutorial simples de utilização no terminal, bem como um Dockerfile caso seja requerido utilização de cum conteiner para rodar o dataset, como no caso do projeto atual. Os códigos não foram detalhadamente analisados mas é percebido que estão comentados e cabe ao teste para confirmação.
       + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/4aea31e3-8e15-422c-a9cc-34751932524e)
+   2. SemanticKITTI Point Labeler:
+      + Link do repositório: https://github.com/jbehley/point_labeler
+      + **Overview**: Um dos fundadores do semanticKITTI desenvolveu uma ferramenta feita em openGL e C++ para rotular uma única nuvem de pontos ou uma sequência delas. Basicamente, dado as poses da nuvem de pontos do KITTI dataset, a ferramenta carrega blocos/tiras de nuvem de pontos sobrepostas e, por isso, múltiplas nuvens de pontos são rotuladas de uma vez em uma certa área. O repositório possui uma documentação da ferramenta concisa ([wiki](https://github.com/jbehley/point_labeler/wiki)) e apresenta os pacotes e dependencias para utilizar, como o catkin e glow, por exemplo.
+      + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/899a061b-4c12-4d62-9297-77c008f068de)
 
-   2. CloudCompare:
+   3. CloudCompare:
       + Link da plataforma: https://www.danielgm.net/cc/
       + **Overview**: É uma plataforma feita em C++ de pré-processamento, processamento e visualização de nuvem de pontos 3D com uma interface gráfica, ferramentas de segmentação, automatização de processos por scripts (não inclusos) para integrar em pipelines de processamentos de dados e uma documentação intuitiva para o uso. Além disso, possui recursos avançados para análise estatística, análise visual dos resultados e operações de pré-processamento, como filtragem e remoção de outliers, por exemplo, antes da aplicação de um algoritmo de segmentação. É possível utilizar a plataforma com dados do ROS e vice-versa
       + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/66d0fccf-09a4-4769-bf49-b1192f2f708d)
 
-   3. Open3D
+   4. Open3D
       + Link da plataforma: http://www.open3d.org/
       + **Overview**: É uma plataforma em python/C++ mais orientada ao processamento de dados 3D, como nuvem de pontos e malhas, sendo possível integrar em pipelines de processamento mais amplo para uma análise de videos. Por enquanto, um ponto positivo é que a plataforma é compatível com o Jupyter Notebook ou Google Colab, porém a análise da nuvem de pontos das cenas do dataset selecionado provavelmente terá que ser feita frame a frame. É possível utilizar a plataforma com dados do ROS e vice-versa.
       + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/70a55c92-34ac-482e-b584-e6883fceb451)
