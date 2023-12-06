@@ -199,6 +199,13 @@ __Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D,
       + Link da plataforma: http://www.open3d.org/
       + **Overview**: É uma plataforma em python/C++ mais orientada ao processamento de dados 3D, como nuvem de pontos e malhas, sendo possível integrar em pipelines de processamento mais amplo para uma análise de videos. Por enquanto, um ponto positivo é que a plataforma é compatível com o Jupyter Notebook ou Google Colab, porém a análise da nuvem de pontos das cenas do dataset selecionado provavelmente terá que ser feita frame a frame. É possível utilizar a plataforma com dados do ROS e vice-versa.
       + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70708476/70a55c92-34ac-482e-b584-e6883fceb451)
+     
+   5. ApolloScapeAuto API:
+      + Link do repositório: https://github.com/ApolloScapeAuto/dataset-api
+      + **Overview**: O Apollo é uma arquitetura para o desenvolvimento, teste e implantação de Veículos Autônomos. O ApolloScape, é uma parte desse projeto, sendo um conjunto de dados e ferramentas orientados para pesquisa em todos os aspectos da direção autônoma, desde percepção, navegação e controle até simulação. O repositório inclui Predição de Trajetória, Detecção e Rastreamento de Objetos 3D por LIDAR, Análise de Cena, Segmentação de Pistas, Autolocalização, Instância de Carro 3D, Estéreo e Conjunto de Dados de Preenchimento, todas as ferramentas possuem breves explicações do seu funcionamento, formato do arquivo e dados e método de avaliação, além do download do dataset, porém não possuem tutoriais para o uso da ferramenta.
+      + ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/70653905/06db0b2e-2706-4766-a10d-4f1ca9399c16)
+
+
 
 
 
