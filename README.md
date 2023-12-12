@@ -93,6 +93,22 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
     + Link para o artigo: https://www.researchgate.net/profile/Dingfu-Zhou/publication/329057353_Simulating_LIDAR_Point_Cloud_for_Autonomous_Driving_using_Real-world_Scenes_and_Traffic_Flows/links/5c22ea0f92851c22a3463a25/Simulating-LIDAR-Point-Cloud-for-Autonomous-Driving-using-Real-world-Scenes-and-Traffic-Flows.pdf
     + __Pendente__
     + Datasets utilizados: KITTI (https://www.cvlibs.net/datasets/kitti/), SYNTHIA (https://synthia-dataset.net/), Apollo Point Cloud (https://apolloscape.auto/).
+
+15. SqueezeSeg: Convolutional Neural Nets with Recurrent CRF for Real-Time Road-Object Segmentation from 3D LiDAR Point Cloud (2017)
+    + Link para o artigo: https://arxiv.org/pdf/1710.07368.pdf
+    + A ideia do autor era de utilizar deep learning parar segmentar objetos de trânsito presentes em uma núvem de pontos geradas pelo LiDAR, uma vez que as abordagens da época apresentavam diversas desvantagens, como o mesmo explica.
+    + A abordagem escolhida foi a de projetar um pipeline end-to-end baseado em CNN e CRF, onde a núvem de pontos 3D do LiDAR seria convertida através de projeções esféricas em uma grid 2D, e fornecida como entrada para a 2D CNN. O autor ainda menciona que a rede proposta foi inspirada no SqueezeNet.
+![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/46076494/909723e5-1d5e-45dd-84fb-5443be039a55)
+    + O modelo foi treinado utilizando a núvem de pontos do KITTI dataset, e a point-wise segmentation foi convertida a partir das bouding boxes 3D do KITTI, para obter ainda mais dados, o paper utiliza o jogo GTA V como simulador e implementa um LiDAR para gerar nuvens de pontos e point-wise segmentation.
+      + O framework do simulador foi baseado no [DeepGTAV](https://github.com/David0tt/DeepGTAV) que utiliza o [ScriptHookV](http://www.dev-c.com/gtav/scripthookv) como plugin.
+      + O LiDAR foi posicionado acima do carro, que dirige de maneira autônoma, e foram coletadas 8,585 amostras
+    ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/46076494/0842b7ad-5409-4455-92f3-2c923c29eae9)
+      + E para deixar os dados mais realistas, foi aplicada a mesma distribuição de ruído do KITTI sobre as imagens.
+    ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/46076494/b30b6076-53aa-44bf-9b8c-056d7fce0377)
+    + Resultados levando em consideração apenas a categoria "carros".
+    ![image](https://github.com/alunos-pfc/ArtigosPCSS/assets/46076494/f13eddf0-819e-4fa7-b242-7d2dc842972e)
+
+
 ## Categorização dos Datasets
 
 1. NuScenes: A Multimodal dataset for Autonomous Driving (https://www.nuscenes.org/nuscenes)
