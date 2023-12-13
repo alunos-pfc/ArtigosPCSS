@@ -203,6 +203,12 @@ __Controle da qualidade dos rótulos__:  Em todas as tarefas de rotulagem 2D/3D,
    + **STATUS**: _Selecionado para confirmação_. É um dataset muito completo com diversas imagens e ferramentas, o mesmo possui uma anotação semântica pixel a pixel dos dados registrados fornecida em 2D, que talvez não seja utilizada, mas também possui uma anotação semântica ponto a ponto em 3D para 28 classes, que pode ser do interesse do projeto.
 
 
+4. Cityscapes: Dataset for Semantic Urban Scene Understanding
+   + Link para o artigo: https://www.cityscapes-dataset.com/wordpress/wp-content/papercite-data/pdf/cordts2016cityscapes.pdf
+   + Links relevantes: https://github.com/mcordts/cityscapesScripts
+   + **Overview**: Cityscapes é um conjunto de benchmarks e de dados em larga escala para desenvolver e avaliar métodos de rotulagem semântica em nível de pixel e instância. É composto por sequências de vídeo estéreo de 50 cidades, incluindo 5000 imagens com anotações detalhadas e 20.000 com anotações menos precisas. Possui 30 classes visuais para anotação, agrupadas em oito categorias: plano, construção, natureza, veículo, céu, objeto, humano e vazio.
+   + **Definições das classes**:
+
 ## Ferramentas
    1. SemanticKITTI API:
       + Link do repositório: https://github.com/PRBonn/semantic-kitti-api
