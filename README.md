@@ -112,6 +112,8 @@ A ideia é colocar os artigos e refências a serem analisados para tirar a concl
     + Link para o artigo: https://isprs-annals.copernicus.org/articles/VIII-4-W2-2021/67/2021/isprs-annals-VIII-4-W2-2021-67-2021.pdf
     + A proposta do autor é gerar LiDAR data através de um simulador, treinar uma CNN através desses dados sintéticos para segmentar e classificar nuvens de pontos 3D do mundo real em ambientes urbanos.
     + Como descrito no paper, anotar dados de uma point cloud é um trabalho manual e demorado, então surge a ideia de se utilizar jogos e ambientes simulados para facilitar estas tarefas.
+    + Os dados de treinmaneto foram coletados através do simulador [CARLA](https://carla.org/), e o dataset de teste foi selecionado a partir do [NPM3D benchmark dataset](https://npm3d.fr/), cujo altor denomina como Lille dataset.
+    + A arquitetura utilizada foi a Kernel Point Convolution para tarefas de segmentação.
     + __Em andamento...__
 
 ## Categorização dos Datasets
